@@ -1,5 +1,5 @@
 html,body {
-    background-color: lightgrey;
+    background-color: white ;
     margin: 0px;
     padding: 0; 
     height: 100%;
@@ -43,21 +43,68 @@ html,body {
     color: white;
 }
 .section{ 
-    margin: 0px 0px 3vh  3vh;
+    margin: 2vh 2vh 2vh  2vh;
     flex :1;
     min-height: 100%;
     position: relative;
+    background-color: lightgrey;
+    border-radius: 10px;
 }
 
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; 
+}
 
 .footer {
     text-align: center;
-    margin-bottom: 100px;
-    bottom: 0;
-    padding-bottom: 10px;
-    padding-top: 10px;
-    width: 100%;
+    margin-top: auto; 
     height: 60px;
-    background-color: #3f3f3f ;
+    background-color: #282829;
+    text-decoration: none;
+    color: white;
     
+}
+footer h3
+{ 
+    padding: 5px;
+    text-align: center;
+    margin: 0;
+}
+.footer a {
+    padding: 5px;
+    text-align: center;
+    color: white;
+    text-decoration: none;
+
+}
+
+.section-box { 
+    margin: 2vh 2vh 2vh  2vh;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center;
+    text-align: center; 
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr; 
+    gap: 20px; 
+}
+.product-box {
+    background-color: white;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.product-box img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
 }
