@@ -42,14 +42,7 @@ html,body {
     text-decoration: none;
     color: white;
 }
-.section{ 
-    margin: 2vh 2vh 2vh  2vh;
-    flex :1;
-    min-height: 100%;
-    position: relative;
-    background-color: lightgrey;
-    border-radius: 10px;
-}
+
 
 .wrapper {
     display: flex;
@@ -77,6 +70,19 @@ footer h3
     text-align: center;
     color: white;
     text-decoration: none;
+
+}
+.section{ 
+    margin: 2vh 2vh 2vh  2vh;
+    flex :1;
+    min-height: 100%;
+    position: relative;
+    background-color: lightgrey;
+    border-radius: 10px;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    flex: 1;
 
 }
 
@@ -124,8 +130,8 @@ footer h3
 {
     display: flex;
     flex-direction: column;
+    max-width: 90%;
     gap:10px;
-    max-width: 500px;
     margin: 0 auto;
     padding: 20px;
     background-color: #a9a9a9;
@@ -135,4 +141,14 @@ footer h3
 
 .contact-form label {
     font-weight: bold;
+}
+
+.contact-form input,
+.contact-form select,
+.contact-form textarea,
+.contact-form button {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
 }
