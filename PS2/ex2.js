@@ -1,11 +1,8 @@
-document.addEventListener("DOMContentLoaded", function() {
-    let data = prompt("Give Radius");
-    if (data !== null) {
-      let radius = parseFloat(data);
-      if (!isNaN(radius)) {
-        alert("The radius you entered is: " + radius);
-      } else {
-        alert("Please enter a valid number.");
-      }
-    }
-  });
+let data= prompt("Give radius")
+
+let radius = parseFloat(data)
+
+let area = Math.PI * Math.pow(radius,2)
+let circuit = 2* Math.PI * radius 
+
+alert("Area " + area +"\n"+  "\nCircuit "+ circuit);
