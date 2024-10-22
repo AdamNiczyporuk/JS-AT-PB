@@ -59,5 +59,5 @@ function combine2(operation, ...arrays)
 
 // console.log(points); // Zwraca: [{x: 1, y: 7}, {x: 2, y: 8}, {x: 3, y: 9}]
 
-let wynik = combine((a, b, c) => a + b + c, [1, 2, 3], [5, 6, 7], [10, 20, 30]);
-console.log(wynik); // Zwraca: [16, 28, 40]
+let wynik = combine2((a, b, c) => a + b + c, [1, 2, 3], [5, 6, 7], [10, 20, 30]);
+console.log(wynik); 
