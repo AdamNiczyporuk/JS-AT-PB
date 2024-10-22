@@ -13,5 +13,12 @@ function combine(operation,array1,array2)
     }
     return result;
 }
-let wynik=combine((a,b)=>a+b,[4,5,6],[10,20,30]);
-console.log(wynik);
+// let wynik=combine((a,b)=>a+b,[4,5,6],[10,20,30]);
+// console.log(wynik);
+
+let xCoords = [1, 2, 3];
+let yCoords = [7, 8, 9];
+
+let points = combine((x, y) => ({ x: x, y: y }), xCoords, yCoords);
+
+console.log(points); // Zwraca: [{x: 1, y: 7}, {x: 2, y: 8}, {x: 3, y: 9}]
