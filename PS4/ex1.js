@@ -24,7 +24,10 @@ class product
     }
     productYearAge()
     { 
-        return year.getFullYear() +"years";
+        const age  = this.productYear();
+        if(age === 1 ) return `${wiek} rok`
+        if(age >=2  && age <=4) return `${wiek} lata`
+        return `${wiek} lat`
     }
 
 }
