@@ -1,160 +1,182 @@
-class Product
-{
-    constructor(id,name,model,productionYear,price,energyUsage)
-    {   this.id=id;
-        this.name=name; 
-        this.model=model;
-        this.productionYear=productionYear;
-        this.price=price;
-        this.energyUsage=energyUsage;
+class Product {
+    constructor(id, name, model, productionYear, price, energyUsage) {
+        this.id = id;
+        this.name = name;
+        this.model = model;
+        this.productionYear = productionYear; // Zmiana roku na liczbę
+        this.price = price;
+        this.energyUsage = energyUsage;
     }
 
-    itemPrice()
-    { 
-        return this.price
-    }
-    energyCost()
-    { 
-        return this.energyUsage
-    }
-    productYear()
-    { 
-        const year = new Date().getFullYear()
-        return year -this.productionYear
-    }
-    productYearAge()
-    { 
-        const age  = this.productYear()
-        if(age === 1 ) return `${age} rok`
-        if(age >=2  && age <=4) return `${age} lata`
-        return `${age} lat`
+    itemPrice() {
+        return this.price;
     }
 
+    energyCost() {
+        return this.energyUsage;
+    }
+
+    productYear() {
+        const year = new Date().getFullYear();
+        return year - this.productionYear;
+    }
+
+    productYearAge() {
+        const age = this.productYear();
+        if (age === 1) return `${age} rok`;
+        if (age >= 2 && age <= 4) return `${age} lata`;
+        return `${age} lat`;
+    }
 }
 
-class ShopList
-{ 
-    constructor()
-    { 
-        this.products = []
-    }
-    addProduct(product)
-    { 
-        if(this.products.some(p => p.id === product.id))
-        { 
-            throw new Error("Product exit in list")
-        }
-        else
-        { 
-            this.products.push(product)
-        }
-        
-    }
-    productDetails(id)
-    { 
-       const product = this.products.find(p => p.id === id)
-       if(!product) 
-       {
-            throw new Error("Product not found")
-       }
-
-        return `Produkt: ${product.name}, Model: ${product.model}, Cena: ${product.price}, Wiek: ${product.productYearAge()}, Koszt energii: ${product.energyCost()} PLN`
+class ShopList {
+    constructor() {
+        this.products = [];
     }
 
-    AllproductsDetails()
-    { 
-        if(this.products.length === 0)
-        { 
-            return "No products"
+    addProduct(product) {
+        if (this.products.some(p => p.id === product.id)) {
+            throw new Error("Product already exists in the list");
+        } else {
+            this.products.push(product);
+        }
+    }
+
+    productDetails(id) {
+        const product = this.products.find(p => p.id === id);
+        if (!product) {
+            throw new Error("Product not found");
+        }
+
+        return `Produkt: ${product.name}, Model: ${product.model}, Cena: ${product.price}, Wiek: ${product.productYearAge()}, Koszt energii: ${product.energyCost()} PLN`;
+    }
+
+    AllproductsDetails() {
+        if (this.products.length === 0) {
+            return "No products";
         }
         return this.products.map(product => this.productDetails(product.id)).join("\n");
-
     }
-    editProduct(id,newproduct)
-    { 
-        const product = this.products.find(p => p.id === id)
-        if(!product)
-        { 
-            throw new Error("Product not found")
-        }
-        product.name = newproduct.name
-        product.model = newproduct.model
-        product.price = newproduct.price
-        product.productionYear = newproduct.productionYear
-        product.energyUsage = newproduct.energyUsage
 
-        
+    editProduct(id, newProduct) {
+        const product = this.products.find(p => p.id === id);
+        if (!product) {
+            throw new Error("Product not found");
+        }
+        product.name = newProduct.name;
+        product.model = newProduct.model;
+        product.price = newProduct.price;
+        product.productionYear = newProduct.productionYear;
+        product.energyUsage = newProduct.energyUsage;
     }
 }
 
-// const produkt = new  Product(1, "Lodówka", "LG123", 2018, 2500, 400)
-// console.log("Koszt produktu:", produkt.itemPrice())
-// console.log("Koszt zużycia energii:", produkt.energyCost())
-// console.log("Wiek produktu:", produkt.productYear())
-// console.log("Wiek produktu (słownie):", produkt.productYearAge())
-// Tworzenie przykładowych produktów
-const product1 = new Product(1, "Laptop", "Dell XPS 13", 2021, 5000, 200);
-const product2 = new Product(2, "Telewizor", "Samsung QLED", 2019, 3000, 250);
-const product3 = new Product(3, "Pralka", "Bosch Serie 6", 2018, 2000, 300);
-const product4 = new Product(4, "Lodówka", "LG Smart", 2022, 4000, 150);
-const product5 = new Product(5, "Odkurzacz", "Dyson V11", 2020, 1500, 100);
-
-// Tworzenie listy produktów i dodawanie produktów
-const shopList = new ShopList();
-
-class Magazine extends ShopList
-{
-    constructor(){
+class Magazine extends ShopList {
+    constructor() {
         super();
-        this.inventory = {}
+        this.inventory = {};
     }
-    addProduct(product,quantity)
-    { 
-        if(this.products.some(p=>p.id === product.id))
-        {
-            throw new Error("Product exit in list")
-        }
-        else{ 
-            this.products.push(product)
-            this.inventory[product.id] = quantity
-        }
-    }
-    takeProduct(id,quantity)
-    {
-         let product; 
 
-         if(typeof id === "number")
-         {
-         product = this.products.find(p => p.id === id)
-         }
-         else if(typeof id === "string")
-         {
-            product = this.products.find(p => p.name === id)
-         }
+    addProduct(product, quantity) {
+        // Użyj super.addProduct, aby dodać produkt do listy
+        super.addProduct(product);
+        this.inventory[product.id] = quantity; // Teraz to działa, gdy produkt jest dodany
+    }
+
+    takeProduct(id, quantity) {
+        let product;
+        if (typeof id === "number") {
+            product = this.products.find(p => p.id === id);
+        } else if (typeof id === "string") {
+            product = this.products.find(p => p.name === id);
+        }
+
+        if (!product || !this.inventory[product.id]) {
+            throw new Error("Product not found in inventory or insufficient stock");
+        }
+
+        if (this.inventory[product.id] < quantity) {
+            throw new Error("Not enough products in stock");
+        }
+
+        this.inventory[product.id] -= quantity;
+
+        const productCopy = { ...product };
+        return productCopy;
     }
 }
 
-try {
-    shopList.addProduct(product1);
-    shopList.addProduct(product2);
-    shopList.addProduct(product3);
-    shopList.addProduct(product4);
-    shopList.addProduct(product5);
+class Shop extends ShopList {
+    constructor() {
+        super();
+        this.currentId = 1;
+        this.orders = [];
+    }
 
-    console.log("Lista wszystkich produktów:");
-    console.log(shopList.AllproductsDetails());
+    addProduct(name, model, price, energyUsage) {
+        const id = this.currentId++;
+        const productionYear = new Date().getFullYear(); // Używamy roku jako liczby
+        const product = new Product(id, name, model, productionYear, price, energyUsage);
 
-    // Edytowanie produktu
-    const updatedProduct = new Product(1, "Laptop", "Dell XPS 15", 2022, 5500, 220);
-    shopList.editProduct(1, updatedProduct);
+        super.addProduct(product); // Używamy addProduct z ShopList
+    }
 
-    console.log("\nPo edytowaniu produktu 1:");
-    console.log(shopList.AllproductsDetails());
+    addProductWithId(id, name, model, price, energyUsage) {
+        const productionYear = new Date().getFullYear();
+        const product = new Product(id, name, model, productionYear, price, energyUsage);
+        
+        // Użyj super.addProduct, aby dodać produkt do listy
+        super.addProduct(product);
+    }
 
-    // Wyświetlanie szczegółów jednego produktu
-    console.log("\nSzczegóły produktu o ID 3:");
-    console.log(shopList.productDetails(3));
+    createOrder() {
+        const newOrder = { id: this.orders.length + 1, items: [] };
+        this.orders.push(newOrder);
+        return newOrder;
+    }
 
-} catch (error) {
-    console.error(error.message);
+    addProductToOrder(orderId, productId, quantity) {
+        const order = this.orders.find(order => order.id === orderId);
+        if (!order) {
+            throw new Error("Order not found.");
+        }
+
+        const product = this.products.find(p => p.id === productId);
+        if (!product) {
+            throw new Error("Product not found in the shop.");
+        }
+
+        order.items.push({ productId, quantity });
+    }
+
+    fulfillOrder(orderId, magazyn) {
+        const order = this.orders.find(order => order.id === orderId);
+        if (!order) {
+            throw new Error("Order not found.");
+        }
+
+        order.items.forEach(item => {
+            magazyn.takeProduct(item.productId, item.quantity);
+        });
+
+        console.log(`Order number ${orderId} has been fulfilled.`);
+    }
 }
+
+// Przykład użycia
+const sklep = new Shop();
+const magazyn = new Magazine();
+
+// Dodajemy produkt do magazynu
+const produkt = new Product(1, "Laptop", "Dell XPS 13", 2021, 5000, 200);
+magazyn.addProduct(produkt, 10);
+
+// Dodajemy produkt do sklepu
+sklep.addProductWithId(1, "Laptop", "Dell XPS 13", 5000, 200);
+
+// Tworzymy zamówienie
+const zamówienie = sklep.createOrder();
+sklep.addProductToOrder(zamówienie.id, 1, 2);  // Dodajemy 2 sztuki Laptopa do zamówienia
+
+// Realizacja zamówienia
+sklep.fulfillOrder(zamówienie.id, magazyn);
