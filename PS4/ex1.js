@@ -1,10 +1,10 @@
 class product
 {
-    constructor(id,name,model,year,price,energyUsage)
+    constructor(id,name,model,productionYear,price,energyUsage)
     {   this.id=id;
         this.name=name; 
         this.model=model;
-        this.year=year;
+        this.productionYear=productionYear;
         this.price=price;
         this.energyUsage=energyUsage;
     }
@@ -19,7 +19,8 @@ class product
     }
     productYear()
     { 
-        return this.year
+        const year = new Date().getFullYear();
+        return year -this.productionYear;
     }
     productYearAge()
     { 
