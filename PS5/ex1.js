@@ -1,4 +1,15 @@
-document.getElementById("paragraf1").innerHTML = "Hello!";
 
-const el = document.getElementById("drugi");
-el.innerHTML = "jestem";
+const color = ["blue","green","purple","red","orange","pink", "brown", "black", "white"] 
+
+function  GetRandomColor()
+{ 
+    const randomIndex = Math.floor(Math.random() * color.length)
+    return color[randomIndex]
+
+}
+
+
+document.getElementById("paragraf1").style.color =  GetRandomColor()
+document.getElementById("paragraf2").style.color = GetRandomColor()
+document.getElementById("paragraf3").style.color = GetRandomColor()
+document.getElementById("paragraf4").style.color = GetRandomColor()
