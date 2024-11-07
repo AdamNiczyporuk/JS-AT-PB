@@ -17,9 +17,9 @@ function  GetRandomColor()
 
 const paragraph = document.querySelectorAll("p")
 
-paragraph.forEach((p) => {
-    p.style.color = GetRandomColor()
+paragraph.forEach((paragraph,index) => {
+    paragraph.style.color = GetRandomColor()
 
-    
+
 
 })
