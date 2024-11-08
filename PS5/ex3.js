@@ -23,15 +23,15 @@ paragraphs.forEach((paragraph,index) => {
 
         paragraph.style.border = "2px solid green";
         paragraph.style.backgroundColor = index % 2 == 0 ? "#d3d3d3"  : "#a9a9a9";
-
+        console.log(index)
         if (index > 0)
         { 
-            paragraph[index-1].style.color = "2px solid orange"
+            paragraphs[index - 1].style.border = "2px solid orange";
         }
         
         if(index < paragraphs.length -1)
         {
-            paragraph[index+1].style.color = "2px solid blue"
+            paragraphs[index+1].style.border = "2px solid blue"
         }
     })
     
