@@ -11,3 +11,14 @@ function  GetRandomColor()
 const paragraphs = document.querySelectorAll('p')
 
 
+paragraphs.forEach((paragraph,index) => {
+
+    paragraph.addEventListener('click', () => {
+        
+        paragraphs.forEach((p) => {
+            p.style.border = "";
+            p.style.backgroundColor = "";
+        })
+    })
+    
+});
