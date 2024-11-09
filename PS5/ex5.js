@@ -6,4 +6,16 @@ paragraphs.forEach((paragraph,index) => {
     header.textContent = `Paragraph ${index + 1}`;
 
     paragraph.parentNode.insertBefore(header, paragraph);
+
+
+    header.addEventListener("click", () => { 
+        
+        if(paragraph.style.display === "none"){
+            paragraph.style.display = "block";
+        }
+        else
+        { 
+            paragraph.style.display = "none";
+        }
+    })
 });
