@@ -16,8 +16,8 @@ function AddEventToParagraph(paragraph,index)
 
 
 
-const paragraph = document.querySelectorAll('p')
-
+const paragraphs = document.querySelectorAll('p')
+paragraphs.forEach((paragraph,index) => AddEventToParagraph(paragraph,index));
 
 document.getElementById("addParagraph").addEventListener("click",() => { 
     const input = document.getElementById("newParagraphText"); 
@@ -29,8 +29,8 @@ document.getElementById("addParagraph").addEventListener("click",() => {
         newParagraph.textContent = text;
         document.body.appendChild(newParagraph); 
 
-        const allParagraphs = document.querySelector('p')
-        AddEventToParagraph(newParagraph,allParagraphs-1)
+        const allParagraphs = document.querySelectorAll('p')
+        AddEventToParagraph(newParagraph,allParagraphs.length -1)
         input = "";
     }
 })
