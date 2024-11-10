@@ -24,5 +24,15 @@ paragraphs.forEach((paragraph,index) => {
 const paragraph = document.querySelectorAll('p')
 
 document.getElementById("addParagraph").addEventListener("click",() => { 
-    const input = document.getElementById
+    const input = document.getElementById("newParagraphText"); 
+    const text = input.vale.trim();
+
+    if(text)
+    { 
+        const newParagraph = document.createElement('p')
+        newParagraph.textContent = text;
+        document.body.appendChild(newParagraph0); 
+
+        const allParagraph
+    }
 })
