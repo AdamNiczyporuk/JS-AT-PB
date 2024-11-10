@@ -21,5 +21,4 @@ paragraphs.forEach((paragraph,index) => {
         }
      })
 });
-
-function AddParagraph
+const paragraph = document.querySelectorAll('p')
