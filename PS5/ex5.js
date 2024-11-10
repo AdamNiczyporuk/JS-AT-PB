@@ -22,3 +22,7 @@ paragraphs.forEach((paragraph,index) => {
      })
 });
 const paragraph = document.querySelectorAll('p')
+
+document.getElementById("addParagraph").addEventListener("click",() => { 
+    const input = document.getElementById
+})
